@@ -122,20 +122,12 @@ packer.startup {
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
-    -- A list of colorscheme plugin you may want to try. Find what suits you.
-    use { "navarasu/onedark.nvim", opt = true }
-    use { "sainnhe/edge", opt = true }
-    use { "sainnhe/sonokai", opt = true }
-    use { "sainnhe/gruvbox-material", opt = true }
-    use { "shaunsingh/nord.nvim", opt = true }
-    use { "sainnhe/everforest", opt = true }
-    use { "EdenEast/nightfox.nvim", opt = true }
-    use { "rebelot/kanagawa.nvim", opt = true }
-    use { "catppuccin/nvim", as = "catppuccin", opt = true }
-    use({ "rose-pine/neovim", as = 'rose-pine', opt = true })
-    use { "olimorris/onedarkpro.nvim", opt = true }
-    use { "tanvirtin/monokai.nvim", opt = true }
-    use { "marko-cerovac/material.nvim", opt = true }
+    -- Colorscheme plugin. 
+    use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end } 
+
+    -- Configure the gruvbox theme for a softer color scheme
+    vim.g.gruvbox_contrast_dark = 'soft'
+    vim.g.gruvbox_contrast_light = 'soft'
 
     use { "nvim-tree/nvim-web-devicons", event = "VimEnter" }
 

@@ -125,6 +125,35 @@ packer.startup {
     -- Colorscheme plugin. 
     use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end } 
 
+    -- Startify 
+    use {
+      'mhinz/vim-startify',
+      config = function()
+        vim.g.startify_custom_header = vim.fn.startify.pad(vim.fn.split(vim.fn.system('fortune | cowsay | fold -w 80 -s'), '\n'))
+        vim.g.startify_lists = {
+          { type = 'sessions', header = {'   Sessions'} },
+          { type = 'files', header = {'   Files'} },
+          { type = 'dir', header = {'   Current Directory Contents'} },
+        }
+        vim.g.startify_session_dir = '~/.config/nvim/session'
+        vim.g.startify_session_autoload = 1
+        vim.g.startify_session_delete_buffers = 1
+        vim.g.startify_session_persistence = 1
+        vim.g.startify_change_to_vcs_root = 1
+        vim.g.startify_fortune_use_unicode = 1
+        vim.g.startify_enable_special = 0
+        vim.g.startify_update_oldfiles = 1
+        vim.g.startify_change_to_dir = 0
+        vim.g.startify_files_number = 10
+        vim.g.startify_bookmarks = {
+          { i = '~/.config/nvim/init.vim' },
+          { z = '~/.zshrc' },
+          { t = '~/.tmux.conf' },
+          { v = '~/vimwiki/index.md' },
+        }
+      end
+    }
+
     -- Configure the gruvbox theme for a softer color scheme
     vim.g.gruvbox_contrast_dark = 'soft'
     vim.g.gruvbox_contrast_light = 'soft'
@@ -389,3 +418,5 @@ api.nvim_create_autocmd({ "BufWritePost" }, {
     vim.notify("PackerCompile done!", vim.log.levels.INFO, { title = "Nvim-config" })
   end,
 })
+
+
